@@ -1,0 +1,106 @@
+/*
+  Copyright 2019 www.dev5.cn, Inc. dev5@qq.com
+ 
+  This file is part of X-MSG-IM.
+ 
+  X-MSG-IM is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  X-MSG-IM is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+ 
+  You should have received a copy of the GNU Affero General Public License
+  along with X-MSG-IM.  If not, see <https://www.gnu.org/licenses/>.
+ */
+syntax = "proto3";
+
+option java_package = "x.msg.pb";
+option java_outer_classname = "XmsgImGroupCfgPb";
+
+message XmsgImGroupCfgPb
+{
+    string cgt = 1; 
+    string cfgType = 2; 
+    XmsgImGroupCfgMongodb mongodb = 3; 
+    XmsgImGroupCfgMysql mysql = 4; 
+    XmsgImGroupCfgLog log = 5; 
+    XmsgImGroupCfgXscTcpServer xscTcpCfg = 6; 
+    repeated XmsgImGroupCfgXmsgNeH2nAddr h2n = 7; 
+    repeated XmsgImGroupCfgXmsgNeN2hAddr n2h = 8; 
+    XmsgImGroupCfgMisc misc = 9; 
+    uint64 gts = 10; 
+    uint64 uts = 11; 
+}
+
+message XmsgImGroupCfgMongodb
+{
+    string uri = 1; 
+}
+
+message XmsgImGroupCfgMysql
+{
+    string host = 1;
+    uint32 port = 2;
+    string db = 3;
+    string usr = 4;
+    string password = 5;
+    uint32 poolSize = 6;
+}
+
+message XmsgImGroupCfgLog
+{
+    string level = 1; 
+    string output = 2; 
+}
+
+message XmsgImGroupCfgXscTcpServer
+{
+    string addr = 1; 
+    uint32 worker = 2; 
+    uint32 peerLimit = 3; 
+    uint32 peerMtu = 4; 
+    uint32 peerRcvBuf = 5; 
+    uint32 peerSndBuf = 6; 
+    uint32 lazyClose = 7; 
+    bool tracing = 8; 
+    uint32 heartbeat = 9; 
+    uint32 n2hZombie = 10; 
+    uint32 n2hTransTimeout = 11; 
+    bool n2hTracing = 12; 
+    uint32 h2nReConn = 13; 
+    uint32 h2nTransTimeout = 14; 
+}
+
+message XmsgImGroupCfgXmsgNeH2nAddr
+{
+    string neg = 1; 
+    string addr = 2; 
+    string pwd = 3; 
+    string alg = 4; 
+    uint32 redundant = 5; 
+}
+
+message XmsgImGroupCfgXmsgNeN2hAddr
+{
+    string neg = 1; 
+    string cgt = 2; 
+    string pwd = 3; 
+    string addr = 4; 
+}
+
+message XmsgImGroupCfgMisc
+{
+    uint32 receivedMode = 1; 
+    uint32 groupMsgSaveBatchSize = 2; 
+    uint32 verApplyCount = 3; 
+    string hlr = 4; 
+    uint32 groupMsgQueueLimit = 5; 
+    uint32 groupEvnQueueLimit = 9; 
+    uint32 groupMemberCountLimit = 6; 
+    uint32 groupObjInfoCached = 7; 
+    uint32 groupObjInfoLru = 8; 
+}

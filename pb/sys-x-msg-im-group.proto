@@ -1,0 +1,100 @@
+/*
+  Copyright 2019 www.dev5.cn, Inc. dev5@qq.com
+ 
+  This file is part of X-MSG-IM.
+ 
+  X-MSG-IM is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  X-MSG-IM is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+ 
+  You should have received a copy of the GNU Affero General Public License
+  along with X-MSG-IM.  If not, see <https://www.gnu.org/licenses/>.
+ */
+syntax = "proto3";
+
+option java_package = "x.msg.pb";
+option java_outer_classname = "XmsgImGroupSysPb";
+message XmsgImGroupObjInfoQueryReq
+{
+    string ucgt = 1; 
+    string gcgt = 2; 
+    string oid = 3; 
+}
+
+message XmsgImGroupObjInfoQueryRsp
+{
+    string ucgt = 1; 
+    uint64 gts = 2; 
+}
+message XmsgImHlrUsrInitReq
+{
+    string cgt = 1; 
+    map<string, string> ext = 2; 
+}
+
+message XmsgImHlrUsrInitRsp
+{
+    map<string, string> ext = 1; 
+}
+message XmsgApClientKickReq
+{
+    string ccid = 1; 
+}
+
+message XmsgApClientKickRsp
+{
+    map<string, string> ext = 1; 
+}
+message XmsgApClientLostNotice
+{
+    string apCgt = 1; 
+    string cgt = 2; 
+    string plat = 3; 
+    string did = 4; 
+    string ccid = 5; 
+}
+message XmsgApClientEstbNotice
+{
+    string apCgt = 1; 
+    string cgt = 2; 
+    string plat = 3; 
+    string did = 4; 
+    string ccid = 5; 
+}
+message XmsgImGroupChannelStatusSubReq
+{
+    map<string, string> ext = 1; 
+}
+
+message XmsgImGroupChannelStatusSubRsp
+{
+    map<string, string> ext = 1; 
+}
+message XmsgImGroupChannelStatusPubReq
+{
+    repeated XmsgImGroupChannelStatusChangedNotice notice = 1; 
+    bool more = 2; 
+}
+
+message XmsgImGroupChannelStatusPubRsp
+{
+    map<string, string> ext = 1; 
+}
+message XmsgImGroupChannelStatusChangedNotice
+{
+    string cgt = 1; 
+    string status = 4; 
+}
+message XmsgImGroupNeSyncEventReq
+{
+    uint64 cid = 1; 
+    uint64 ver = 2; 
+    string msg = 3; 
+    bytes dat = 4; 
+}
